@@ -1,0 +1,15 @@
+# ใช้ MySQL 8.0 เป็น Base Image
+FROM mysql:8.0
+
+# กำหนด Environment Variables
+ENV MYSQL_ROOT_PASSWORD=First1058
+ENV MYSQL_DATABASE=kmitl_project
+ENV MYSQL_USER=root
+ENV MYSQL_PASSWORD=First1058
+ENV MYSQL_ROOT_HOST="%"
+
+# คัดลอกไฟล์ SQL หรือไฟล์เริ่มต้นไปยัง Docker
+COPY ./initdb /docker-entrypoint-initdb.d
+
+# Expose พอร์ต 3306
+EXPOSE 3306

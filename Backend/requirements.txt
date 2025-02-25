@@ -1,0 +1,14 @@
+Flask
+Flask-CORS
+Flask-SQLAlchemy
+Flask-JWT-Extended
+Flask-Migrate
+Flask-WTF
+Werkzeug
+PyMySQL
+SQLAlchemy
+Marshmallow
+pytest
+pytest-flask
+gunicorn
+cryptography

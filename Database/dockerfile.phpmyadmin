@@ -1,0 +1,11 @@
+# ใช้ phpMyAdmin Image
+FROM phpmyadmin/phpmyadmin
+
+# กำหนด Environment Variables
+ENV PMA_ARBITRARY=1
+ENV PMA_HOST=database-kitchen
+ENV PMA_USER=root
+ENV PMA_PASSWORD=First1058
+
+# Expose พอร์ต 80
+EXPOSE 80

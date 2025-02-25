@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: database-kitchen
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: First1058
+      MYSQL_DATABASE: kmitl_project
+      MYSQL_USER: root
+      MYSQL_PASSWORD: First1058
+      MYSQL_ROOT_HOST: "%"  # อนุญาตให้เชื่อมต่อจากภายนอก
+    ports:
+      - "5003:3306"  # ใช้ 5003 บน localhost เพื่อเชื่อมต่อจากภายนอก
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./initdb:/docker-entrypoint-initdb.d
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-kitchen
+    restart: always
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: database-kitchen  # ใช้ localhost เพราะจะเชื่อมต่อจาก Host
+      PMA_USER: root
+      PMA_PASSWORD: First1058
+    ports:
+      - "5002:80"
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
